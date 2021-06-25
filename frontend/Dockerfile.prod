@@ -12,4 +12,4 @@ RUN npm run build
 FROM nginx
 COPY --from=builder /app/build /usr/share/nginx/html
 
-# default command in this container is fine
+# nginx image default command is fine, dont need to override
