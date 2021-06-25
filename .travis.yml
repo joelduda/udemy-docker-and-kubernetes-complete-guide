@@ -5,6 +5,7 @@ services:
   - docker
 
 before_install:
+  - cd frontend
   - docker build -t joelduda/udemy-docker-and-kubernetes:travistest -f Dockerfile.dev .
 
 script:
