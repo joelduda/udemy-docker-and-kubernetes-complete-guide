@@ -10,3 +10,15 @@ before_install:
 
 script:
   - docker run -e CI=true joelduda/udemy-docker-and-kubernetes:travistest npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ca-central-1"
+  app: "udemy-docker"
+  env: "Udemydocker-env"
+  bucket_name: "elasticbeanstalk-ca-central-1-730208295227"
+  bucket_path: "udemy-docker"
+  on:
+    branch: main
+  access_key_id: $access_key_id
+  secret_access_key: $secret_access_key
