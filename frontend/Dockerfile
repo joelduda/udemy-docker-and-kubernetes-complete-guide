@@ -1,0 +1,16 @@
+# build production react code
+FROM node:alpine as builder
+
+WORKDIR /app
+
+COPY . .
+
+RUN npm install
+RUN npm run build
+
+# build production nginx container and copy production react code
+FROM nginx
+EXPOSE 80
+COPY --from=builder /app/build /usr/share/nginx/html
+
+# nginx image default command is fine, dont need to override
